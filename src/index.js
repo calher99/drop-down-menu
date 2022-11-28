@@ -13,9 +13,14 @@ topOptionArray.forEach((option) => {
 });
 
 function addActive(eventObj) {
+  removeActive();
   const idTarget = eventObj.target.dataset.option;
   const div = document.querySelector(idTarget);
   div.classList.add('active');
 }
 
-function removeActive() {}
+function removeActive() {
+  dropDownArray.forEach((list) => {
+    list.classList.remove('active');
+  });
+}
