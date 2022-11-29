@@ -2,6 +2,7 @@ import './style.css';
 
 const topOptions = document.querySelectorAll('.drop-down');
 const dropDown = document.querySelectorAll('.drop-down-container');
+const overlay = document.querySelector('#overlay');
 const topOptionArray = Array.from(topOptions);
 const dropDownArray = Array.from(dropDown);
 
