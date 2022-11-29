@@ -1,27 +1,29 @@
 import './style.css';
 
-const topOptions = document.querySelectorAll('.drop-down');
-const dropDown = document.querySelectorAll('.drop-down-container');
-const overlay = document.querySelector('#overlay');
-const topOptionArray = Array.from(topOptions);
-const dropDownArray = Array.from(dropDown);
+document.addEventListener('click', (e) => {
+  const isDropDown = e.target.matches('[data-option]');
 
-topOptionArray.forEach((option) => {
-  option.addEventListener('click', addActive);
-});
-topOptionArray.forEach((option) => {
-  option.addEventListener('mouseover', addActive);
-});
+  if (!isDropDown && e.target.closest('.option-container') != null) {
+    // Here we click in the drop down container so we want to keep it open
+    return;
+  }
 
-function addActive(eventObj) {
+  let currentDropDown;
+
+  if (isDropDown) {
+    currentDropDown = document.querySelector(e.target.dataset.option);
+    currentDropDown.classList.toggle('active');
+  }
+
   removeActive();
-  const idTarget = eventObj.target.dataset.option;
-  const div = document.querySelector(idTarget);
-  div.classList.add('active');
-}
 
-function removeActive() {
-  dropDownArray.forEach((list) => {
-    list.classList.remove('active');
-  });
-}
+  function removeActive() {
+    const dropDown = document.querySelectorAll('.drop-down-container');
+    dropDown.forEach((list) => {
+      if (list === currentDropDown) {
+        return;
+      }
+      list.classList.remove('active');
+    });
+  }
+});
