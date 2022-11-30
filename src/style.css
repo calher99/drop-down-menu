@@ -55,6 +55,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     pointer-events: none;
+    /*So when is not active it is invisible and cant
+    be interated with (if not I can hover over)*/
 }
 
 .drop-down-container.active {
